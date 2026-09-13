@@ -1,0 +1,4 @@
+#Tư duy: Kiểm tra xem đồ thị có phẳng hay k
+=> Hiện tại thành phần liên thông của bài là 1 thành phần duy nhất. Tuy nhiên độ sâu của cây của sự lệch về size khi union
+    Tức là thành phần liên thông con trong cái thành phần liên thông lớn nhất lại nằm ở vị trí trên -> Vô lí về mặt thiết kế của thuật toán
+    => Đây không phải là thành phần liên thông của thuật toán trọng số

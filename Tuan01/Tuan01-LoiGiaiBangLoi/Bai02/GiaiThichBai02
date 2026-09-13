@@ -1,0 +1,16 @@
+##Câu a: Chứa 1 thành phần liên thông duy nhất
+##Câu b: Với mảng n phẩn tử, khi duyệt từ 1 -> n - 1. Thêm nữa union() ở bài này chỉ được phép thay đổi leader[p] -> ta sẽ luôn lấy q làm root
+        => union(0,1) -> cập nhật leader[0] = 1 -> 1 lần
+        => union(0,2) -> cập nhật số 0 và 1 -> 2 lần
+        => union(0,3) -> cập nhật số 0, 1, 2, -> 3 lần
+        ..........
+        => union(0,n-1) -> cập nhật số 0,1,2,...n-2 -> n-1 lần
+        => Tổng cộng có: 1 + 2 + 3 +...+ n-1 = [(n - 1 + 1)*(n-1)]/(2) = (n^2 - n)/2 => O(n^2)
+##Câu c: Với mảng này sau khi union, mỗi lần union chỉ cập nhật parent của p.
+        Do vậy: union(0,1) -> parent[] = [1,1,2,3,4,....n-1]
+                union(0,2) -> parent[] = [1,2,2,3,4,...n-1]
+                .....
+                union(0,n-1) -> parent[] = [1,2,3,...,n-1,n-1]
+        => khi gọi find(0). Tức là ta sẽ phải duyệt từ 0 -> n-1 để lấy root. Vậy cần duyệt n lần -> O(n)
+##Câu d: Vì lần này khi hai mảng có cùng kích thước thì parent[p] sẽ bị thay đổi. Do đó ở bước đầu tiên union(0,1) thì 0 sẽ lấy 1 làm parent.
+        Do đó find(0) sẽ duyệt mảng 1 lần

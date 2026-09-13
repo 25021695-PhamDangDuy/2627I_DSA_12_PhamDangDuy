@@ -1,0 +1,17 @@
+Ở bài này khi run thì output sẽ lỗi ở số 3 mặc dù trong Input đã thấy rõ rằng số 3, 2 ,1 đều cùng 1 thành phần liên thông từ đầu
+Lí do:
+    Trong mảng khi gán leader[q] = leader[p] ở lượt duyệt đầu đã thay đổi leader[p]
+    Ở các lần duyệt tiếp theo, leader[p] lúc này đã bằng leader[q]
+Cách giải quyết:
+    Thêm một biến tĩnh trước int[] root để lưu giá trị root ban đầu gán cho việc so sánh
+
+    Code mẫu
+
+    public void union(int p, int q){
+        int pRoot = leader[p];
+        for (int i = 0; i < leader.length ; i++){
+            if(leader[i] == pRoot){
+                leader[i] = leader[q];
+            }
+        }
+    }

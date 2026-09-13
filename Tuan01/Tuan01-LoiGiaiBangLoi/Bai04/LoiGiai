@@ -1,0 +1,19 @@
+#Tư duy: Trong bài này ta sẽ thấy size[8] <= 2: Tức là 2, 1
+    Th1: Đơn giản nhất là 0, 4, 8. Tại các số này đều là nguồn với size từ 3 trở lên, nên luôn đúng
+    Th2: Số 9 đã nối với 8 -> Loại
+    Th2: Với 1,2,3,5,6,7. Ta chia thành 2 trường hợp theo thành phần liên thông hiện tại
+        Th2.1: 1,2,3
+            Hiện tại 0 đang là nguồn của 1, 2, 3.
+            Để parent[8] = 1/2/3 thì phải thực hiện liên kết trước khi union giữa 0 và 1/2/3
+            Tuy nhiên, vì không còn số nào trỏ tới 1/2/3 vì vậy trước liên kết với 0 thì 1/2/3 chắc chắn cho size[] = 1
+            Tức là khi union với 8 ở dạng chưa có 9 liên kết thì 1-8 và khi  này union(8,9) chắc chắn phải ra 1/2/3 khi lấy parent[9]
+            Còn nếu union với 8 khi đã có 9 thì buộc 1/2/3 phải ra 8 khi lấy parent[1/2/3]
+            -> Vô lí
+        Th2.2: 5,6,7
+            số 6 này tương tự Th2.1 của 1/2/3 -> Loại
+            Với 5/7. để có cấu trúc 4 <- 5 <- 7 thì thứ tự nối buộc phải là union(5,7) trước rồi union(4,5) hoặc union(4,7)
+            Đồng nghĩa với việc là union(4,5)/union(4,7) lúc này thành phần liên thông của 4 phải có size >= 2 (tức là đã nối với 6 trước)
+            thì mới ra cấu trúc hiện tại được
+            -> Do vậy để số 8 can thiệp được vào thì phải union ở giữa 2 cái union kể trên.
+            -> Tuy nhiên do size là bằng nhau nên size sau khi union sẽ lớn hơn size của 4 lúc đó -> không thể có 4 làm root được
+            -> Vô lí

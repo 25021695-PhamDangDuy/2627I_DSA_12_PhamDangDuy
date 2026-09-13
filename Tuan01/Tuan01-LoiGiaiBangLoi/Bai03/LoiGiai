@@ -1,0 +1,19 @@
+#Tư duy: Trong bài tập này, ta sẽ sử dụng cách tư duy giải là so sánh 2 thành phần liên thông trước và sau khi union()
+        bằng cách bẻ gãy liên kết union() đó
+Câu a: union(0,4) : Bằng cách bẻ gãy liên kết, ta thấy trước khi liên kết thì ta có 2 thành phần liên thông vơi size bằng nhau bằng 4
+        => Theo đề cho thì lúc này bắt buộc 0 phải làm nguồn. Nhưng ở hiện tại thì ngược lại
+        => Loại
+Câu b: union(2,3) : Ta thấy 2 thành phần liên thông trước khi liên kết có thành phần chứa số 2 size to hơn. Vì vậy số 3 sẽ cần nối với
+                nguồn của thành phần liên thông chứa số 2 là 4 lúc đó. Mà trong hiện tại thì số 3 đang nối trực tiêếp với 2
+                => Loại
+Câu c: union(4,0) : Câu này ngược lại với câu a -> Đúng
+Câu d: union(4,5) : Rõ ràng trước khi liên kết thành phần liên thông chứa số 4 lơn hơn, mà số 4 lại là nguồn -> Đúng
+Câu e: union(5,0) : Tại đây có 2 trường hợp về thành phần liên thông trước khi liên kết.
+            + TH1: nguồn của 0 ban đầu là 4 và nguồn của 5 là 5
+                Rõ ràng thành phần liên thông của 4 với 0 là to hơn. Vì vậy TH này đúng
+            + TH2: nguồn của 0 ban đầu là 0 và nguồn của 5 là 4
+                Rõ ràng thành phần liên thông cả 2 là bằng nhau. Vậy union(5,0) sẽ lấy thành phần chứa 5 và 4 làm nguồn => Đúng
+            => Câu e đúng
+Câu f: union(5,7): Rõ ràng là 7 cần phải liên kết với 4 là nguồn của 5 -> Sai
+Câu g: union(6,4): Rõ ràng là đúng
+Câu h: union(8,9): Rõ ràng là đúng
