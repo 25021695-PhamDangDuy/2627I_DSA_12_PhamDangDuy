@@ -1,0 +1,55 @@
+# 1.4.1. Chứng minh số bộ ba phần tử có thể chọn từ N phần tử là
+# N(N-1)(N-2)/6
+
+Tư duy:
+Ta cần chọn 3 phần tử khác nhau từ N phần tử.
+Có thể dùng quy nạp toán học.
+
+Gọi:
+
+    f(N) = số bộ ba có thể chọn từ N phần tử.
+
+Với N = 3:
+
+    Chỉ có đúng 1 bộ ba.
+
+    N(N-1)(N-2)/6
+    = 3*2*1/6
+    = 1
+
+=> Đúng với N = 3.
+
+
+Giả sử công thức đúng với N:
+
+    f(N) = N(N-1)(N-2)/6
+
+Xét N+1 phần tử.
+
+Các bộ ba được tạo thành gồm:
+
+    + Các bộ ba chỉ sử dụng N phần tử đầu:
+        f(N)
+
+    + Các bộ ba có chứa phần tử thứ N+1:
+        Chọn thêm 2 phần tử trong N phần tử còn lại
+        -> có N(N-1)/2 bộ
+
+Do đó:
+
+    f(N+1)
+    = N(N-1)(N-2)/6 + N(N-1)/2
+
+    = N(N-1)(N-2)/6 + 3N(N-1)/6
+
+    = N(N-1)(N+1)/6
+
+    = (N+1)((N+1)-1)((N+1)-2)/6
+
+=> Công thức đúng với N+1.
+
+Vậy theo quy nạp:
+
+    f(N) = N(N-1)(N-2)/6
+
+=> Đúng.

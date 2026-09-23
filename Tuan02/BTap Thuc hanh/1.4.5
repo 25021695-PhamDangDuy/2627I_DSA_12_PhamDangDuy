@@ -1,0 +1,81 @@
+# 1.4.5. Áp dụng phép xấp xỉ
+
+Tư duy:
+Khi N -> lớn, ta giữ lại thành phần tăng trưởng chính.
+Các thành phần nhỏ hơn sẽ bỏ qua.
+
+
+a. N + 1
+
+    N tăng theo N
+    1 là hằng số
+
+    -> N + 1 ~ N
+
+
+b. 1 + 1/N
+
+    Khi N -> ∞:
+
+        1/N -> 0
+
+    -> 1 + 1/N ~ 1
+
+
+c. (1 + 1/N)(1 + 2/N)
+
+    Khi N -> ∞:
+
+        1/N -> 0
+        2/N -> 0
+
+    -> (1 + 1/N)(1 + 2/N) ~ 1
+
+
+d. 2N^3 - 15N^2 + N
+
+    Thành phần có bậc cao nhất là N^3.
+
+    -> 2N^3 chi phối.
+
+    -> 2N^3 - 15N^2 + N ~ 2N^3
+
+
+e. lg(2N) / lgN
+
+    lg(2N)
+    = lg2 + lgN
+
+    -> (lg2 + lgN)/lgN
+
+    = lg2/lgN + 1
+
+    Khi N -> ∞:
+
+        lg2/lgN -> 0
+
+    -> ~ 1
+
+
+f. lg(N^2 + 1) / lgN
+
+    lg(N^2 + 1)
+    ~ lg(N^2)
+    = 2lgN
+
+    -> lg(N^2 + 1)/lgN ~ 2
+
+
+g. N^(100/2^N)
+
+    Xét số mũ:
+
+        100/2^N -> 0
+
+    Do đó:
+
+        N^(100/2^N)
+        -> N^0
+        -> 1
+
+    => ~ 1

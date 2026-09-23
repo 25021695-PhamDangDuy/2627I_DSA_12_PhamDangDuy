@@ -1,0 +1,61 @@
+# Bài 4
+
+for (int i = 0; i * i < n; i++)
+    for (int j = 1; j < n; j *= 3)
+        op();
+
+
+Tư duy:
+
+Xét vòng ngoài trước:
+
+    i * i < n
+
+    -> i < sqrt(n)
+
+Do đó:
+
+    i = 0, 1, 2, ..., gần sqrt(n)
+
+=> vòng ngoài chạy ~ sqrt(n) lần.
+
+
+Vòng trong:
+
+    j = 1
+    j = 3
+    j = 9
+    j = 27
+    ...
+
+Sau k lần:
+
+    j = 3^k
+
+Dừng khi:
+
+    3^k >= n
+
+Suy ra:
+
+    k >= log3(n)
+
+=> vòng trong chạy ~ log3(n) lần.
+
+
+Hai vòng lồng nhau:
+
+    sqrt(n) * log3(n)
+
+Bỏ hằng số cơ số log:
+
+    ~ sqrt(n)log(n)
+
+=> Θ(sqrt(n)log n)
+
+
+Kết luận:
+
+    op() ~ sqrt(n)log n
+
+    op() = Θ(sqrt(n)log n)

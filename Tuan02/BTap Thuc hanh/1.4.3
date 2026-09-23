@@ -1,0 +1,109 @@
+# 1.4.3. Sửa DoublingTest để vẽ đồ thị chuẩn và log-log bằng StdDraw
+
+Tư duy:
+DoublingTest dùng để đo thời gian chạy khi kích thước input tăng gấp đôi.
+
+Ta cần lưu:
+
+    N
+    thời gian chạy T
+
+Sau đó vẽ:
+
+    Đồ thị chuẩn:
+        x = N
+        y = T
+
+    Đồ thị log-log:
+        x = log(N)
+        y = log(T)
+
+Để đồ thị luôn chiếm phần lớn cửa sổ,
+ta lấy min/max của dữ liệu để scale.
+
+
+Code:
+
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.Stopwatch;
+import edu.princeton.cs.algs4.StdRandom;
+
+public class DoublingTest {
+
+    public static double timeTrial(int N) {
+        int MAX = 1000000;
+        int[] a = new int[N];
+
+        for (int i = 0; i < N; i++)
+            a[i] = StdRandom.uniformInt(-MAX, MAX);
+
+        Stopwatch timer = new Stopwatch();
+
+        int count = 0;
+
+        for (int i = 0; i < N; i++)
+            for (int j = i + 1; j < N; j++)
+                for (int k = j + 1; k < N; k++)
+                    if ((long) a[i] + a[j] + a[k] == 0)
+                        count++;
+
+        return timer.elapsedTime();
+    }
+
+    public static void main(String[] args) {
+
+        int N = 125;
+
+        double[] x = new double[10];
+        double[] y = new double[10];
+
+        for (int i = 0; i < 10; i++) {
+            x[i] = N;
+            y[i] = timeTrial(N);
+            N *= 2;
+        }
+
+        double xmin = x[0];
+        double xmax = x[x.length - 1];
+        double ymin = y[0];
+        double ymax = y[0];
+
+        for (int i = 1; i < x.length; i++) {
+            if (y[i] < ymin) ymin = y[i];
+            if (y[i] > ymax) ymax = y[i];
+        }
+
+        StdDraw.setXscale(xmin, xmax);
+        StdDraw.setYscale(ymin, ymax);
+
+        for (int i = 0; i < x.length; i++)
+            StdDraw.point(x[i], y[i]);
+
+
+        // Đồ thị log-log
+
+        StdDraw.clear();
+
+        double logXmin = Math.log(x[0]);
+        double logXmax = Math.log(x[x.length - 1]);
+        double logYmin = Math.log(y[0]);
+        double logYmax = Math.log(y[0]);
+
+        for (int i = 1; i < x.length; i++) {
+            double logY = Math.log(y[i]);
+
+            if (logY < logYmin) logYmin = logY;
+            if (logY > logYmax) logYmax = logY;
+        }
+
+        StdDraw.setXscale(logXmin, logXmax);
+        StdDraw.setYscale(logYmin, logYmax);
+
+        for (int i = 0; i < x.length; i++)
+            StdDraw.point(Math.log(x[i]), Math.log(y[i]));
+    }
+}
+
+=> Ý chính:
+    Đồ thị thường dùng (N, T)
+    Đồ thị log-log dùng (logN, logT)

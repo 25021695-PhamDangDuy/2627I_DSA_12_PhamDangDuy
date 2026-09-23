@@ -1,0 +1,38 @@
+# Bài 1
+
+for (int i = 10; i < n + 5; i += 2)
+    op();
+
+
+Tư duy:
+
+i bắt đầu từ 10.
+
+Mỗi lần lặp:
+
+    i = i + 2
+
+Điều kiện:
+
+    i < n + 5
+
+Ta cần số lần tăng i từ 10 lên gần n + 5.
+
+Số lần lặp xấp xỉ:
+
+    (n + 5 - 10) / 2
+
+    = (n - 5) / 2
+
+    ~ n/2
+
+=> op() được gọi ~ n/2 lần.
+
+=> Θ(n)
+
+
+Kết luận:
+
+    op() ~ n/2
+
+    op() = Θ(n)

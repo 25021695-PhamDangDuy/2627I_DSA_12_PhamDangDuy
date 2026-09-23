@@ -1,0 +1,50 @@
+# Bài 5
+
+for (int i = 0; i < n; i++)
+    for (int j = 1; j < n; j *= 2)
+        op();
+
+
+Tư duy:
+
+Vòng ngoài:
+
+    i = 0 -> n - 1
+
+=> n lần.
+
+
+Vòng trong:
+
+    j = 1
+    j = 2
+    j = 4
+    j = 8
+    ...
+    j = 2^k
+
+Dừng khi:
+
+    2^k >= n
+
+=> k ~ log2(n)
+
+=> vòng trong chạy ~ log2(n) lần.
+
+
+Hai vòng lồng nhau:
+
+    n * log2(n)
+
+=> op() ~ nlog2(n)
+
+Bỏ hằng số cơ số log:
+
+=> Θ(nlog n)
+
+
+Kết luận:
+
+    op() ~ nlog2(n)
+
+    op() = Θ(nlog n)

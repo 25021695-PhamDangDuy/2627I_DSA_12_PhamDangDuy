@@ -1,0 +1,46 @@
+# Bài 3
+
+for (int i = 0; i < n; i++)
+    for (int j = 0; j < 100; j++)
+        op();
+
+
+Tư duy:
+
+Vòng ngoài:
+
+    i = 0 -> n - 1
+
+    -> n lần
+
+
+Vòng trong:
+
+    j = 0 -> 99
+
+    -> 100 lần
+
+100 là hằng số:
+
+    -> Θ(1)
+
+
+Mỗi lần i chạy,
+vòng trong gọi op() 100 lần.
+
+Do đó:
+
+    tổng số lần op()
+    = n * 100
+    = 100n
+
+    ~ n
+
+=> Θ(n)
+
+
+Kết luận:
+
+    op() ~ 100n
+
+    op() = Θ(n)

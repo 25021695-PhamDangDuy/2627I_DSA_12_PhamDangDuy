@@ -1,0 +1,175 @@
+# 1.4.13. Tính bộ nhớ
+
+Tư duy:
+Dùng mô hình bộ nhớ 64-bit:
+
+    object overhead = 16 bytes
+    reference       = 8 bytes
+    int             = 4 bytes
+    double          = 8 bytes
+
+Sau đó cộng các field của object
+và làm tròn theo alignment.
+
+
+a. Accumulator
+
+Accumulator có:
+
+    double total
+    int N
+
+Bộ nhớ field:
+
+    double = 8
+    int    = 4
+
+    -> 12 bytes
+
+Cộng object overhead:
+
+    16 + 12 = 28
+
+Làm tròn lên bội số 8:
+
+    -> 32 bytes
+
+=> ~32 bytes
+
+
+b. Transaction
+
+Có:
+
+    String who       -> 8 bytes
+    Date when        -> 8 bytes
+    double amount    -> 8 bytes
+
+Tổng field:
+
+    8 + 8 + 8 = 24
+
+Cộng overhead:
+
+    16 + 24 = 40
+
+=> ~40 bytes
+
+
+c. FixedCapacityStackOfStrings
+
+Object có:
+
+    String[] a -> 8 bytes
+    int N      -> 4 bytes
+
+    -> 12 bytes
+
+Cộng object overhead:
+
+    16 + 12 = 28
+    -> làm tròn = 32 bytes
+
+
+Nhưng còn mảng String[]:
+
+    array overhead = 24 bytes
+    mỗi phần tử là reference = 8 bytes
+
+Mảng có capacity C:
+
+    -> 24 + 8C
+
+
+Tổng:
+
+    32 + 24 + 8C
+
+    = 56 + 8C
+
+=> ~ 8C + 56 bytes
+
+Lưu ý:
+N phần tử String trong stack chỉ là N reference
+đã nằm trong mảng capacity C.
+
+Không tính bộ nhớ của chính các String
+vì đề đã nói client cấp phát.
+
+
+d. Point2D
+
+Có:
+
+    double x
+    double y
+
+    = 8 + 8
+    = 16 bytes
+
+Cộng overhead:
+
+    16 + 16
+    = 32 bytes
+
+=> ~32 bytes
+
+
+e. Interval1D
+
+Có:
+
+    double min
+    double max
+
+    = 8 + 8
+    = 16
+
+Cộng overhead:
+
+    16 + 16
+    = 32 bytes
+
+=> ~32 bytes
+
+
+f. Interval2D
+
+Có:
+
+    Interval1D x
+    Interval1D y
+
+Đây là 2 reference:
+
+    8 + 8 = 16
+
+Cộng object overhead:
+
+    16 + 16
+    = 32 bytes
+
+=> object Interval2D ~32 bytes
+
+Nếu tính cả 2 object Interval1D mà Interval2D tham chiếu tới:
+
+    Interval2D
+    + Interval1D
+    + Interval1D
+
+    = 32 + 32 + 32
+    = 96 bytes
+
+
+g. Double
+
+Double object có:
+
+    double value = 8 bytes
+
+Cộng object overhead:
+
+    16 + 8
+    = 24 bytes
+
+=> ~24 bytes

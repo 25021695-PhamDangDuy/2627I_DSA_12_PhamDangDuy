@@ -1,0 +1,43 @@
+# Bài 2
+
+for (int i = 1; i <= n * n * n; i *= 2)
+    op();
+
+
+Tư duy:
+
+i có dạng:
+
+    1
+    2
+    4
+    8
+    ...
+    2^k
+
+Vòng lặp dừng khi:
+
+    2^k > n^3
+
+Suy ra:
+
+    k > log2(n^3)
+
+    k = 3log2(n)
+
+=> số lần lặp xấp xỉ:
+
+    3log2(n)
+
+Bỏ hằng số:
+
+    ~ log n
+
+=> Θ(log n)
+
+
+Kết luận:
+
+    op() ~ 3log2(n)
+
+    op() = Θ(log n)

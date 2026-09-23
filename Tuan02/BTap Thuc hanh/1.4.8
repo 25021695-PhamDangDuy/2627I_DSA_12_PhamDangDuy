@@ -1,0 +1,88 @@
+# 1.4.8. Đếm số cặp có giá trị bằng nhau
+
+Tư duy:
+Cách đơn giản:
+
+    for i
+        for j > i
+            nếu a[i] == a[j]
+                count++
+
+-> Θ(N^2)
+
+
+Có thể dùng Arrays.sort() để giảm xuống NlogN.
+
+Sau khi sort:
+
+    [1, 1, 1, 2, 2, 3, 4, 4, 4]
+
+Ta gom các phần tử bằng nhau.
+
+Nếu một giá trị xuất hiện k lần:
+
+    số cặp = k(k-1)/2
+
+
+Ví dụ:
+
+    1 xuất hiện 3 lần
+    -> 3*2/2 = 3 cặp
+
+    2 xuất hiện 2 lần
+    -> 2*1/2 = 1 cặp
+
+    4 xuất hiện 3 lần
+    -> 3 cặp
+
+Tổng = 7.
+
+
+Code:
+
+import edu.princeton.cs.algs4.In;
+import java.util.Arrays;
+
+public class EqualPairs {
+
+    public static void main(String[] args) {
+
+        In in = new In(args[0]);
+
+        int[] a = in.readAllInts();
+
+        Arrays.sort(a);
+
+        long count = 0;
+
+        int i = 0;
+
+        while (i < a.length) {
+
+            int j = i + 1;
+
+            while (j < a.length && a[j] == a[i])
+                j++;
+
+            long k = j - i;
+
+            count += k * (k - 1) / 2;
+
+            i = j;
+        }
+
+        System.out.println(count);
+    }
+}
+
+
+Độ phức tạp:
+
+    đọc dữ liệu       -> O(N)
+    Arrays.sort()     -> O(NlogN)
+    duyệt mảng        -> O(N)
+
+    Tổng:
+        O(NlogN)
+
+=> Tốt hơn thuật toán O(N^2).

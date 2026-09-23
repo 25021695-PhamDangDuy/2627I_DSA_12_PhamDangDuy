@@ -1,0 +1,70 @@
+# Bài 6
+
+for (int i = 0; i < n; i++)
+    for (int j = 0; j < 100; j++)
+        for (int k = 0; k < n; k++)
+            for (int l = k; l < n; l++)
+                op();
+
+
+Tư duy:
+
+Vòng i:
+
+    i = 0 -> n - 1
+
+=> n lần.
+
+
+Vòng j:
+
+    j = 0 -> 99
+
+=> 100 lần
+
+    ~ 1
+
+
+Vòng k:
+
+    k = 0 -> n - 1
+
+=> n lần.
+
+
+Vòng l:
+
+    l = k -> n - 1
+
+Với mỗi k, số lần lặp là:
+
+    n - k
+
+Do đó tổng số lần của hai vòng k, l là:
+
+    n + (n - 1) + (n - 2) + ... + 1
+
+    = n(n + 1)/2
+
+    ~ n^2/2
+
+
+Vậy tổng số lần op():
+
+    n * 100 * n(n + 1)/2
+
+    ~ 50n^3
+
+
+Bỏ hằng số:
+
+    ~ n^3
+
+=> Θ(n^3)
+
+
+Kết luận:
+
+    op() ~ 50n^3
+
+    op() = Θ(n^3)

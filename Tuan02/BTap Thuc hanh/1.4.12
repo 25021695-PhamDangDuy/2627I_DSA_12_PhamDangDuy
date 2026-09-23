@@ -1,0 +1,111 @@
+# 1.4.12. Tìm các giá trị xuất hiện ở cả hai mảng đã sắp xếp
+
+Tư duy:
+Vì cả hai mảng đều đã được sắp xếp,
+không cần dùng binary search cho từng phần tử.
+
+Dùng 2 con trỏ:
+
+    i -> mảng a
+    j -> mảng b
+
+
+Nếu:
+
+    a[i] < b[j]
+
+thì a[i] chắc chắn không xuất hiện ở phía sau của b
+vì b[j] đã lớn hơn a[i].
+
+    -> tăng i
+
+
+Nếu:
+
+    a[i] > b[j]
+
+thì tương tự:
+
+    -> tăng j
+
+
+Nếu:
+
+    a[i] == b[j]
+
+thì tìm được một giá trị xuất hiện ở cả hai.
+
+    -> in ra
+    -> tăng cả i và j
+
+
+Code:
+
+public static void intersection(int[] a, int[] b) {
+
+    int i = 0;
+    int j = 0;
+
+    while (i < a.length && j < b.length) {
+
+        if (a[i] < b[j]) {
+            i++;
+        }
+        else if (a[i] > b[j]) {
+            j++;
+        }
+        else {
+            System.out.println(a[i]);
+            i++;
+            j++;
+        }
+    }
+}
+
+
+Ví dụ:
+
+    a = [1, 3, 5, 7, 9]
+    b = [2, 3, 5, 8, 9]
+
+    i=0, j=0:
+        1 < 2
+        -> i++
+
+    3 > 2
+        -> j++
+
+    3 == 3
+        -> in 3
+        -> i++, j++
+
+    5 == 5
+        -> in 5
+
+    7 < 8
+        -> i++
+
+    9 > 8
+        -> j++
+
+    9 == 9
+        -> in 9
+
+=> kết quả:
+
+    3
+    5
+    9
+
+
+Độ phức tạp:
+
+    Mỗi bước ít nhất một trong i hoặc j tăng.
+
+    -> tối đa M + N bước
+
+=> O(M + N)
+
+Nếu hai mảng đều có kích thước N:
+
+=> O(N)

@@ -1,0 +1,44 @@
+# 1.4.7. Phân tích ThreeSum brute force
+
+ThreeSum duyệt:
+
+for (int i = 0; i < N; i++)
+    for (int j = i + 1; j < N; j++)
+        for (int k = j + 1; k < N; k++)
+            if ((long) a[i] + a[j] + a[k] == 0)
+                count++;
+
+
+Tư duy:
+Mỗi lần chọn:
+
+    i < j < k
+
+tương ứng với việc chọn 3 phần tử khác nhau từ N phần tử.
+
+Số bộ ba:
+
+    C(N,3)
+    = N(N-1)(N-2)/6
+
+    ~ N^3/6
+
+
+Mỗi bộ ba chỉ thực hiện:
+
+    a[i] + a[j] + a[k]
+    + phép so sánh
+    + có thể count++
+
+-> mỗi bộ ba mất O(1).
+
+Do đó:
+
+    T(N)
+    ~ N(N-1)(N-2)/6
+
+    ~ 1/6 N^3
+
+=> Θ(N^3)
+
+=> Thuật toán ThreeSum brute force có bậc tăng là N^3.
