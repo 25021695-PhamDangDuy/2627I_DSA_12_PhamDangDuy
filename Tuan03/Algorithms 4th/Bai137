@@ -1,0 +1,6 @@
+#Giả sử Stack này sử dụng CTDL dạng linkedList để lưu thông tin các phần tử qua Node
+#Stack lưu sẵn con trỏ head để trả về phân tử đầu tiên
+#Lúc này hàm peak() có code như sau:
+    public Item peak(){
+        return head;
+    }

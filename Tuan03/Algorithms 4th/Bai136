@@ -1,0 +1,9 @@
+#Mô tả đoạn code
+    Stack<String> stack = new Stack<String>();
+    while (!q.isEmpty())  stack.push(q.dequeue());
+    while (!stack.isEmpty())  q.enqueue(stack.pop());
+
+Đầu tiên stack này đang rỗng. Nó kiểm tra xem q có rỗng k, nếu k thì sẽ tiến hành đẩy toàn bộ phần tử vào stack
+Xong nó sẽ kiểm tra tiếp stack và đẩy ngược từ stack về q
+Vậy hàm này đang di chuyển phần từ từ q sang stack rồi lại từ stack về q
+

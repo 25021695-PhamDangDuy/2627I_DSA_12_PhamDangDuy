@@ -1,0 +1,11 @@
+#Mô tả tổng quan:
+    Stack<Integer> stack = new Stack<Integer>();
+    while (N > 0) {
+    stack.push(N % 2);
+    N = N / 2;
+    }
+    for (int d : stack) StdOut.print(d);
+    StdOut.println();
+Đoạn code này có code lõi nằm ở stack.push(N % 2) tức là nó sẽ đẩy vào 0, 1 (số dư của 2).
+Từ đó nó sẽ tính ra được số nhị phân của N
+

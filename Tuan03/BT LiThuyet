@@ -1,0 +1,31 @@
+Câu a: Bắt đầu từ một chuỗi rỗng. Với thao tác từ đề bài ta có như sau:
+    0
+    0 1
+    1
+    -> in ra 1
+    1 2
+    1 2 3
+    2 3
+    -> in ra 2 3
+    2 3 4
+    2 3 4 5
+    3 4 5
+    -> in ra 3 4 5
+    3 4 5 6
+    3 4 5 6 7
+    4 5 6 7
+    -> in ra 4 5 6 7
+    Tổng kết: 1 2 3 3 4 5 4 5 6 7
+Câu b: O(n): trong TH nội tại nó đã thao tác truớc đó 2 lần, thì lần này sẽ phải duyệt toàn bộ danh sách để in ra
+Câu c: Ta cần xét chi phí thực thi của các câu lệnh
+   Enqueue: Mỗi lần thêm là 1 hằng số
+   Dequeue: mỗi lần xóa là 1 hằng số
+   Sau 3 lần thao tác -> duyệt toàn bộ danh sách -> n lần
+
+   Trong N lần thao tác ta sẽ phải thực hiện duyệt mảng N/3 lần
+   Giả sử ban đầu là tập rỗng, và ta thực hiện liên tục enqueue thì tập sẽ daài liên tục
+   => từ 1 -> N. Vậy duyệt cả mảng gồm 3, 6, 9, ... N = (N + 3)(N/3)/2 xấp xỉ N^2
+   Tiếp là tổng lần thao tác là N
+   -> Trong tệ nhất ta thực hiện: ((N) + N^2 )/N -> Xấp xỉ N
+   Vậy độ phức tạp trung bình là N - tuyến tính.
+
